@@ -62,6 +62,8 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>(options =>
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireUppercase = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireDigit = false;
     options.Password.RequiredLength = 4;
 })
     .AddEntityFrameworkStores<DevSteamAPIContext>()
@@ -80,7 +82,7 @@ app.UseSwaggerUI();
 
 // mapear os endpoints padrão do identy framework
 app.MapGroup("/Users").MapIdentityApi<IdentityUser>();
-app.MapGroup("/Roles").MapIdentityApi<IdentityRole>();
+//app.MapGroup("/Roles").MapIdentityApi<IdentityRole>();
 
 
 app.UseHttpsRedirection();
