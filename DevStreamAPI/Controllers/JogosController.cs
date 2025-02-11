@@ -7,31 +7,28 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using DevStreamAPI.Data;
 using DevStreamAPI.Models;
-using Microsoft.AspNetCore.Authorization;
 
 namespace DevStreamAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-    public class JogoesController : ControllerBase
+    public class JogosController : ControllerBase
     {
         private readonly DevSteamAPIContext _context;
 
-        public JogoesController(DevSteamAPIContext context)
+        public JogosController(DevSteamAPIContext context)
         {
             _context = context;
         }
 
-        // GET: api/Jogoes
-        [AllowAnonymous]
+        // GET: api/Jogos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Jogo>>> GetJogos()
         {
             return await _context.Jogos.ToListAsync();
         }
 
-        // GET: api/Jogoes/5
+        // GET: api/Jogos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Jogo>> GetJogo(Guid id)
         {
@@ -45,7 +42,7 @@ namespace DevStreamAPI.Controllers
             return jogo;
         }
 
-        // PUT: api/Jogoes/5
+        // PUT: api/Jogos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutJogo(Guid id, Jogo jogo)
@@ -76,7 +73,7 @@ namespace DevStreamAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Jogoes
+        // POST: api/Jogos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Jogo>> PostJogo(Jogo jogo)
@@ -87,7 +84,7 @@ namespace DevStreamAPI.Controllers
             return CreatedAtAction("GetJogo", new { id = jogo.JogoId }, jogo);
         }
 
-        // DELETE: api/Jogoes/5
+        // DELETE: api/Jogos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteJogo(Guid id)
         {

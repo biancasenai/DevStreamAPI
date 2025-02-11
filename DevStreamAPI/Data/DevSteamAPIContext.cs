@@ -21,5 +21,7 @@ namespace DevStreamAPI.Data
             modelbuilder.Entity<Jogo>().ToTable("Jogos");
             modelbuilder.Entity<Categoria>().ToTable("Categorias");
         }
+        public DbSet<DevStreamAPI.Models.Carrinho> Carrinho { get; set; } = default!;
+        public DbSet<DevStreamAPI.Models.ItemCarrinho> ItemCarrinho { get; set; } = default!;
     }
 };
